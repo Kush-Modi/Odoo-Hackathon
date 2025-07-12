@@ -1,3 +1,16 @@
+https://youtu.be/CLDsegIWTPw link to explanation video 
+Odoo-Hackathon
+Problem Statement 3:- ReWear – Community Clothing Exchange
+
+Mahitha Chippa - mahitha.chippa05@gmail.com
+
+Kush Modi - kushmodi.0505@gmail.com
+
+Shashank Dornala - shashankfan@gmail.com
+
+Badduri Harsha - harshabadduri@gmail.com
+
+
 # ReWear - Clothing Exchange Platform
 
 A modern web application for exchanging and selling pre-loved clothing, built with Next.js, TypeScript, Tailwind CSS, and Firebase.
