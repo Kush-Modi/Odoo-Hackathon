@@ -150,10 +150,10 @@ export default function ItemDetail() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading item details...</p>
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[var(--primary)] mx-auto mb-6"></div>
+          <p className="text-[var(--text-secondary)] text-lg">Loading item details...</p>
         </div>
       </div>
     );
@@ -161,13 +161,13 @@ export default function ItemDetail() {
 
   if (error || !item) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Item Not Found</h2>
-          <p className="text-gray-600 mb-4">{error}</p>
+          <h2 className="text-3xl font-bold text-[var(--text-primary)] mb-4">Item Not Found</h2>
+          <p className="text-[var(--text-secondary)] mb-6">{error}</p>
           <button
             onClick={() => router.push('/browse')}
-            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+            className="btn-primary"
           >
             Back to Browse
           </button>
@@ -178,12 +178,12 @@ export default function ItemDetail() {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-gray-50 py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="min-h-screen bg-[var(--background)] py-12">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="card overflow-hidden">
             {/* Image Gallery */}
             <div className="relative">
-              <div className="aspect-w-16 aspect-h-9 bg-gray-200">
+              <div className="aspect-w-16 aspect-h-9 bg-[var(--surface-secondary)]">
                 {item.imageUrls.length > 0 ? (
                   <img
                     src={item.imageUrls[selectedImage]}
@@ -191,8 +191,8 @@ export default function ItemDetail() {
                     className="w-full h-96 object-cover"
                   />
                 ) : (
-                  <div className="w-full h-96 flex items-center justify-center bg-gray-200">
-                    <p className="text-gray-500">No image available</p>
+                  <div className="w-full h-96 flex items-center justify-center bg-[var(--surface-secondary)]">
+                    <p className="text-[var(--text-muted)]">No image available</p>
                   </div>
                 )}
               </div>
@@ -205,8 +205,8 @@ export default function ItemDetail() {
                       <button
                         key={index}
                         onClick={() => setSelectedImage(index)}
-                        className={`flex-shrink-0 w-16 h-16 rounded-md overflow-hidden border-2 ${
-                          selectedImage === index ? 'border-blue-500' : 'border-gray-300'
+                        className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+                          selectedImage === index ? 'border-[var(--primary)] shadow-lg' : 'border-[var(--border)] hover:border-[var(--primary-light)]'
                         }`}
                       >
                         <img
@@ -222,57 +222,57 @@ export default function ItemDetail() {
             </div>
 
             {/* Item Details */}
-            <div className="p-6">
-              <div className="flex items-start justify-between mb-4">
+            <div className="p-8">
+              <div className="flex items-start justify-between mb-6">
                 <div>
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2">{item.title}</h1>
-                  <div className="flex items-center space-x-4">
+                  <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-4">{item.title}</h1>
+                  <div className="flex items-center space-x-6">
                     {getStatusBadge(item.status)}
-                    <span className="text-2xl font-bold text-blue-600">${item.price}</span>
+                    <span className="text-3xl font-bold text-[var(--primary)]">₹{item.price}</span>
                   </div>
                 </div>
               </div>
 
               {/* Item Info Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Item Details</h3>
-                  <dl className="space-y-2">
+                  <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-4">Item Details</h3>
+                  <dl className="space-y-4">
                     <div>
-                      <dt className="text-sm font-medium text-gray-500">Category</dt>
-                      <dd className="text-sm text-gray-900 capitalize">{item.category}</dd>
+                      <dt className="text-sm font-medium text-[var(--text-secondary)]">Category</dt>
+                      <dd className="text-base text-[var(--text-primary)] capitalize">{item.category}</dd>
                     </div>
                     <div>
-                      <dt className="text-sm font-medium text-gray-500">Size</dt>
-                      <dd className="text-sm text-gray-900">{item.size}</dd>
+                      <dt className="text-sm font-medium text-[var(--text-secondary)]">Size</dt>
+                      <dd className="text-base text-[var(--text-primary)]">{item.size}</dd>
                     </div>
                     <div>
-                      <dt className="text-sm font-medium text-gray-500">Condition</dt>
-                      <dd className="text-sm text-gray-900 capitalize">{item.condition}</dd>
+                      <dt className="text-sm font-medium text-[var(--text-secondary)]">Condition</dt>
+                      <dd className="text-base text-[var(--text-primary)] capitalize">{item.condition}</dd>
                     </div>
                     <div>
-                      <dt className="text-sm font-medium text-gray-500">Uploader</dt>
-                      <dd className="text-sm text-gray-900">{item.uploaderId}</dd>
+                      <dt className="text-sm font-medium text-[var(--text-secondary)]">Uploader</dt>
+                      <dd className="text-base text-[var(--text-primary)]">{item.uploaderId}</dd>
                     </div>
                     <div>
-                      <dt className="text-sm font-medium text-gray-500">Listed</dt>
-                      <dd className="text-sm text-gray-900">{formatDate(item.createdAt)}</dd>
+                      <dt className="text-sm font-medium text-[var(--text-secondary)]">Listed</dt>
+                      <dd className="text-base text-[var(--text-primary)]">{formatDate(item.createdAt)}</dd>
                     </div>
                   </dl>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Description</h3>
-                  <p className="text-gray-700 mb-4">{item.description}</p>
+                  <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-4">Description</h3>
+                  <p className="text-[var(--text-secondary)] mb-6 leading-relaxed">{item.description}</p>
                   
                   {item.tags && item.tags.length > 0 && (
                     <div>
-                      <h4 className="text-sm font-medium text-gray-500 mb-2">Tags</h4>
+                      <h4 className="text-sm font-medium text-[var(--text-secondary)] mb-3">Tags</h4>
                       <div className="flex flex-wrap gap-2">
                         {item.tags.map((tag, index) => (
                           <span
                             key={index}
-                            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+                            className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[var(--primary-light)] bg-opacity-10 text-[var(--primary)]"
                           >
                             {tag}
                           </span>
@@ -285,20 +285,20 @@ export default function ItemDetail() {
 
               {/* Action Buttons */}
               {item.status === 'available' && user && (
-                <div className="border-t pt-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Actions</h3>
+                <div className="border-t border-[var(--border-light)] pt-8">
+                  <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-6">Actions</h3>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <button
                       onClick={handleRequestSwap}
                       disabled={actionLoading}
-                      className="flex-1 bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                      className="flex-1 btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {actionLoading ? 'Processing...' : 'Request Swap'}
                     </button>
                     <button
                       onClick={handleRedeemPoints}
                       disabled={actionLoading}
-                      className="flex-1 bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                      className="flex-1 bg-[var(--success)] text-white px-6 py-3 rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-sm hover:shadow-md"
                     >
                       {actionLoading ? 'Processing...' : 'Redeem with Points'}
                     </button>
@@ -307,14 +307,14 @@ export default function ItemDetail() {
               )}
 
               {item.status === 'available' && !user && (
-                <div className="border-t pt-6">
-                  <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
-                    <p className="text-blue-800 text-sm">
+                <div className="border-t border-[var(--border-light)] pt-8">
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <p className="text-blue-800 text-base">
                       Please log in to request a swap or redeem this item with points.
                     </p>
                     <button
                       onClick={() => router.push('/login')}
-                      className="mt-2 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                      className="mt-4 btn-primary"
                     >
                       Log In
                     </button>
@@ -323,9 +323,9 @@ export default function ItemDetail() {
               )}
 
               {item.status !== 'available' && (
-                <div className="border-t pt-6">
-                  <div className="bg-gray-50 border border-gray-200 rounded-md p-4">
-                    <p className="text-gray-600 text-sm">
+                <div className="border-t border-[var(--border-light)] pt-8">
+                  <div className="bg-[var(--surface-secondary)] border border-[var(--border)] rounded-lg p-6">
+                    <p className="text-[var(--text-secondary)] text-base">
                       This item is no longer available for swap or redemption.
                     </p>
                   </div>

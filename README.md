@@ -1,36 +1,191 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ReWear - Clothing Exchange Platform
+
+A modern web application for exchanging and selling pre-loved clothing, built with Next.js, TypeScript, Tailwind CSS, and Firebase.
+
+## Features
+
+- **User Authentication**: Secure login and registration with Firebase Auth
+- **Item Management**: Browse, list, and manage clothing items
+- **User Dashboard**: Track sales, purchases, and account activity
+- **Admin Panel**: Platform management and analytics
+- **Responsive Design**: Mobile-first design with Tailwind CSS
+- **Real-time Database**: Firestore for data storage
+- **File Storage**: Firebase Storage for item images
+
+## Tech Stack
+
+- **Frontend**: Next.js 15 with TypeScript
+- **Styling**: Tailwind CSS
+- **Backend**: Firebase (Auth, Firestore, Storage)
+- **Deployment**: Vercel (recommended)
+
+## Project Structure
+
+```
+rewear/
+├── src/
+│   ├── app/                    # Next.js App Router pages
+│   │   ├── login/             # Login page
+│   │   ├── register/          # Registration page
+│   │   ├── dashboard/         # User dashboard
+│   │   ├── browse/            # Item browsing
+│   │   ├── item/[id]/         # Item detail pages
+│   │   ├── admin/             # Admin panel
+│   │   └── page.tsx           # Landing page
+│   ├── components/            # Reusable UI components
+│   │   ├── Navbar.tsx         # Navigation component
+│   │   └── ItemCard.tsx       # Item display component
+│   └── firebase/              # Firebase configuration
+│       └── config.ts          # Firebase setup
+├── public/                    # Static assets
+└── package.json
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 18+ 
+- npm or yarn
+- Firebase project
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd rewear
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-## Learn More
+3. **Set up Firebase**
+   - Create a new Firebase project at [Firebase Console](https://console.firebase.google.com/)
+   - Enable Authentication, Firestore Database, and Storage
+   - Get your Firebase configuration
 
-To learn more about Next.js, take a look at the following resources:
+4. **Environment Variables**
+   Create a `.env.local` file in the root directory:
+   ```env
+   NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+   NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+   NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+   NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+6. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-## Deploy on Vercel
+## Pages Overview
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Landing Page (`/`)
+- Hero section with call-to-action
+- Feature highlights
+- Sustainable fashion messaging
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Login (`/login`)
+- Email/password authentication
+- Form validation
+- Link to registration
+
+### Register (`/register`)
+- User registration form
+- Terms and conditions
+- Link to login
+
+### Browse (`/browse`)
+- Item filtering by category, size, condition
+- Sort options
+- Grid layout for items
+- Load more functionality
+
+### Dashboard (`/dashboard`)
+- User statistics (items listed, sold, earnings)
+- Recent activity
+- Tabbed interface for different views
+
+### Item Detail (`/item/[id]`)
+- Detailed item information
+- Image gallery
+- Size selection
+- Purchase options
+- Seller information
+
+### Admin Panel (`/admin`)
+- Platform statistics
+- User management
+- Item management
+- Reports and analytics
+
+## Firebase Setup
+
+### Authentication
+- Email/password authentication enabled
+- User profiles stored in Firestore
+
+### Firestore Database
+Collections structure:
+- `users`: User profiles and preferences
+- `items`: Clothing items with metadata
+- `transactions`: Purchase/sale records
+- `wishlists`: User wishlist items
+
+### Storage
+- Item images stored in Firebase Storage
+- Organized by user and item IDs
+
+## Development
+
+### Adding New Features
+1. Create new pages in `src/app/`
+2. Add components in `src/components/`
+3. Update Firebase configuration as needed
+4. Test thoroughly before deployment
+
+### Styling
+- Use Tailwind CSS classes for styling
+- Follow the existing design system
+- Ensure responsive design
+
+### State Management
+- Use React hooks for local state
+- Firebase real-time listeners for data
+- Context API for global state if needed
+
+## Deployment
+
+### Vercel (Recommended)
+1. Connect your GitHub repository to Vercel
+2. Add environment variables in Vercel dashboard
+3. Deploy automatically on push to main branch
+
+### Other Platforms
+- Netlify
+- Firebase Hosting
+- AWS Amplify
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Support
+
+For support and questions, please open an issue in the repository.

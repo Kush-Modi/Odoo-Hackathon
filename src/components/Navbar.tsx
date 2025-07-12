@@ -17,22 +17,22 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white shadow-lg">
+    <nav className="bg-[var(--surface)] shadow-sm border-b border-[var(--border-light)] backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-2xl font-bold text-gray-900">ReWear</span>
+              <span className="text-2xl font-bold gradient-text">ReWear</span>
             </Link>
           </div>
           
-          <div className="flex items-center space-x-8">
+          <div className="flex items-center space-x-6">
             <Link 
               href="/" 
-              className={`px-3 py-2 rounded-md text-sm font-medium ${
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                 isActive('/') 
-                  ? 'text-blue-600 bg-blue-50' 
-                  : 'text-gray-700 hover:text-blue-600'
+                  ? 'text-[var(--primary)] bg-[var(--primary-light)] bg-opacity-10' 
+                  : 'text-[var(--text-secondary)] hover:text-[var(--primary)] hover:bg-[var(--primary-light)] hover:bg-opacity-5'
               }`}
             >
               Home
@@ -43,37 +43,37 @@ export default function Navbar() {
               <>
                 <Link 
                   href="/browse" 
-                  className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActive('/browse') 
-                      ? 'text-blue-600 bg-blue-50' 
-                      : 'text-gray-700 hover:text-blue-600'
+                      ? 'text-[var(--primary)] bg-[var(--primary-light)] bg-opacity-10' 
+                      : 'text-[var(--text-secondary)] hover:text-[var(--primary)] hover:bg-[var(--primary-light)] hover:bg-opacity-5'
                   }`}
                 >
                   Browse
                 </Link>
                 <Link 
                   href="/dashboard" 
-                  className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActive('/dashboard') 
-                      ? 'text-blue-600 bg-blue-50' 
-                      : 'text-gray-700 hover:text-blue-600'
+                      ? 'text-[var(--primary)] bg-[var(--primary-light)] bg-opacity-10' 
+                      : 'text-[var(--text-secondary)] hover:text-[var(--primary)] hover:bg-[var(--primary-light)] hover:bg-opacity-5'
                   }`}
                 >
                   Dashboard
                 </Link>
                 <Link 
                   href="/add-item" 
-                  className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActive('/add-item') 
-                      ? 'text-blue-600 bg-blue-50' 
-                      : 'text-gray-700 hover:text-blue-600'
+                      ? 'text-[var(--primary)] bg-[var(--primary-light)] bg-opacity-10' 
+                      : 'text-[var(--text-secondary)] hover:text-[var(--primary)] hover:bg-[var(--primary-light)] hover:bg-opacity-5'
                   }`}
                 >
                   Add Item
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="px-4 py-2 rounded-md text-sm font-medium bg-red-600 text-white hover:bg-red-700 transition-colors"
+                  className="px-4 py-2 rounded-lg text-sm font-medium bg-[var(--error)] text-white hover:bg-red-700 transition-all duration-200 shadow-sm hover:shadow-md"
                 >
                   Logout
                 </button>
@@ -83,17 +83,17 @@ export default function Navbar() {
               <>
                 <Link 
                   href="/login" 
-                  className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActive('/login') 
-                      ? 'text-blue-600 bg-blue-50' 
-                      : 'text-gray-700 hover:text-blue-600'
+                      ? 'text-[var(--primary)] bg-[var(--primary-light)] bg-opacity-10' 
+                      : 'text-[var(--text-secondary)] hover:text-[var(--primary)] hover:bg-[var(--primary-light)] hover:bg-opacity-5'
                   }`}
                 >
                   Login
                 </Link>
                 <Link 
                   href="/register" 
-                  className="px-4 py-2 rounded-md text-sm font-medium bg-blue-600 text-white hover:bg-blue-700"
+                  className="px-4 py-2 rounded-lg text-sm font-medium btn-primary"
                 >
                   Register
                 </Link>

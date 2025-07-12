@@ -137,18 +137,18 @@ export default function Browse() {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="min-h-screen bg-[var(--background)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">Browse Items</h1>
-            <p className="text-gray-600 mt-2">Discover pre-loved clothing from our community</p>
+          <div className="mb-12">
+            <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-4">Browse Items</h1>
+            <p className="text-xl text-[var(--text-secondary)]">Discover pre-loved clothing from our community</p>
           </div>
 
           {/* Search Bar */}
-          <div className="bg-white rounded-lg shadow p-6 mb-6">
+          <div className="card p-8 mb-8">
             <div className="max-w-md">
-              <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="search" className="block text-sm font-medium text-[var(--text-primary)] mb-3">
                 Search Items
               </label>
               <input
@@ -157,20 +157,20 @@ export default function Browse() {
                 placeholder="Search by title or category..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-3 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all duration-200 text-[var(--text-primary)] placeholder-[var(--text-muted)]"
               />
             </div>
           </div>
 
           {/* Filters */}
-          <div className="bg-white rounded-lg shadow p-6 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="card p-8 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
+                <label className="block text-sm font-medium text-[var(--text-primary)] mb-3">Category</label>
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full border border-[var(--border)] rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all duration-200 text-[var(--text-primary)] bg-[var(--surface)]"
                 >
                   {categories.map((category) => (
                     <option key={category.value} value={category.value}>
@@ -181,11 +181,11 @@ export default function Browse() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Size</label>
+                <label className="block text-sm font-medium text-[var(--text-primary)] mb-3">Size</label>
                 <select
                   value={selectedSize}
                   onChange={(e) => setSelectedSize(e.target.value)}
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full border border-[var(--border)] rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all duration-200 text-[var(--text-primary)] bg-[var(--surface)]"
                 >
                   {sizes.map((size) => (
                     <option key={size.value} value={size.value}>
@@ -196,11 +196,11 @@ export default function Browse() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Condition</label>
+                <label className="block text-sm font-medium text-[var(--text-primary)] mb-3">Condition</label>
                 <select
                   value={selectedCondition}
                   onChange={(e) => setSelectedCondition(e.target.value)}
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full border border-[var(--border)] rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all duration-200 text-[var(--text-primary)] bg-[var(--surface)]"
                 >
                   {conditions.map((condition) => (
                     <option key={condition.value} value={condition.value}>
@@ -211,11 +211,11 @@ export default function Browse() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
+                <label className="block text-sm font-medium text-[var(--text-primary)] mb-3">Sort By</label>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full border border-[var(--border)] rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all duration-200 text-[var(--text-primary)] bg-[var(--surface)]"
                 >
                   <option value="newest">Newest First</option>
                   <option value="oldest">Oldest First</option>
@@ -229,28 +229,38 @@ export default function Browse() {
           {/* Results */}
           <div>
             {loading ? (
-              <div className="text-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-                <p className="text-gray-600">Loading items...</p>
+              <div className="text-center py-16">
+                <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[var(--primary)] mx-auto mb-6"></div>
+                <p className="text-[var(--text-secondary)] text-lg">Loading items...</p>
               </div>
             ) : error ? (
-              <div className="text-center py-12">
-                <p className="text-red-600">{error}</p>
+              <div className="text-center py-16">
+                <p className="text-[var(--error)] text-lg">{error}</p>
               </div>
             ) : filteredItems.length === 0 ? (
-              <div className="text-center py-12">
-                <p className="text-gray-600">No items found matching your criteria.</p>
+              <div className="text-center py-16">
+                <p className="text-[var(--text-secondary)] text-lg">No items found matching your criteria.</p>
               </div>
             ) : (
               <div>
-                <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-xl font-semibold text-gray-900">
+                <div className="flex justify-between items-center mb-8">
+                  <h2 className="text-2xl font-semibold text-[var(--text-primary)]">
                     {filteredItems.length} item{filteredItems.length !== 1 ? 's' : ''} found
                   </h2>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                   {filteredItems.map((item) => (
-                    <ItemCard key={item.id} {...item} />
+                    <ItemCard
+                      key={item.id}
+                      id={item.id}
+                      title={item.title}
+                      description={item.description}
+                      imageUrl={item.imageUrls?.[0] || '/placeholder-item.jpg'}
+                      price={item.price}
+                      condition={item.condition}
+                      size={item.size}
+                    />
                   ))}
                 </div>
               </div>

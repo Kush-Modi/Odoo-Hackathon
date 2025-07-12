@@ -185,11 +185,13 @@ export default function AddItem() {
 
   if (success) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
         <div className="max-w-md w-full text-center">
-          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-            <p className="font-medium">Item listed successfully!</p>
-            <p className="text-sm">Redirecting to dashboard...</p>
+          <div className="card p-8">
+            <div className="bg-green-50 border border-green-200 text-green-700 px-6 py-4 rounded-lg mb-6">
+              <p className="font-medium text-lg">Item listed successfully!</p>
+              <p className="text-sm mt-2">Redirecting to dashboard...</p>
+            </div>
           </div>
         </div>
       </div>
@@ -198,24 +200,24 @@ export default function AddItem() {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-gray-50 py-8">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-lg shadow-lg p-8">
+      <div className="min-h-screen bg-[var(--background)] py-12">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="card p-8">
             <div className="mb-8">
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Add New Item</h1>
-              <p className="text-gray-600">List your pre-loved clothing for the ReWear community</p>
+              <h1 className="text-4xl font-bold text-[var(--text-primary)] mb-4">Add New Item</h1>
+              <p className="text-xl text-[var(--text-secondary)]">List your pre-loved clothing for the ReWear community</p>
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-md p-4 mb-6">
-                <p className="text-sm text-red-600">{error}</p>
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-8">
+                <p className="text-sm text-[var(--error)]">{error}</p>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-8">
               {/* Title */}
               <div>
-                <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="title" className="block text-sm font-medium text-[var(--text-primary)] mb-3">
                   Title *
                 </label>
                 <input
@@ -226,14 +228,14 @@ export default function AddItem() {
                   disabled={loading}
                   value={formData.title}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50"
+                  className="w-full px-4 py-3 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all duration-200 disabled:bg-[var(--surface-secondary)] disabled:cursor-not-allowed text-[var(--text-primary)] placeholder-[var(--text-muted)]"
                   placeholder="e.g., Vintage Denim Jacket"
                 />
               </div>
 
               {/* Description */}
               <div>
-                <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="description" className="block text-sm font-medium text-[var(--text-primary)] mb-3">
                   Description *
                 </label>
                 <textarea
@@ -244,7 +246,7 @@ export default function AddItem() {
                   rows={4}
                   value={formData.description}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50"
+                  className="w-full px-4 py-3 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all duration-200 disabled:bg-[var(--surface-secondary)] disabled:cursor-not-allowed text-[var(--text-primary)] placeholder-[var(--text-muted)]"
                   placeholder="Describe the item's condition, style, and any notable features..."
                 />
               </div>
@@ -252,7 +254,7 @@ export default function AddItem() {
               {/* Category and Size */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="category" className="block text-sm font-medium text-[var(--text-primary)] mb-3">
                     Category *
                   </label>
                   <select
@@ -262,7 +264,7 @@ export default function AddItem() {
                     disabled={loading}
                     value={formData.category}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50"
+                    className="w-full px-4 py-3 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all duration-200 disabled:bg-[var(--surface-secondary)] disabled:cursor-not-allowed text-[var(--text-primary)] bg-[var(--surface)]"
                   >
                     {categories.map((category) => (
                       <option key={category.value} value={category.value}>
@@ -273,7 +275,7 @@ export default function AddItem() {
                 </div>
 
                 <div>
-                  <label htmlFor="size" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="size" className="block text-sm font-medium text-[var(--text-primary)] mb-3">
                     Size *
                   </label>
                   <select
@@ -283,7 +285,7 @@ export default function AddItem() {
                     disabled={loading}
                     value={formData.size}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50"
+                    className="w-full px-4 py-3 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all duration-200 disabled:bg-[var(--surface-secondary)] disabled:cursor-not-allowed text-[var(--text-primary)] bg-[var(--surface)]"
                   >
                     {sizes.map((size) => (
                       <option key={size.value} value={size.value}>
@@ -297,7 +299,7 @@ export default function AddItem() {
               {/* Condition and Price */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="condition" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="condition" className="block text-sm font-medium text-[var(--text-primary)] mb-3">
                     Condition *
                   </label>
                   <select
@@ -307,7 +309,7 @@ export default function AddItem() {
                     disabled={loading}
                     value={formData.condition}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50"
+                    className="w-full px-4 py-3 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all duration-200 disabled:bg-[var(--surface-secondary)] disabled:cursor-not-allowed text-[var(--text-primary)] bg-[var(--surface)]"
                   >
                     {conditions.map((condition) => (
                       <option key={condition.value} value={condition.value}>
@@ -318,8 +320,8 @@ export default function AddItem() {
                 </div>
 
                 <div>
-                  <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-2">
-                    Price *
+                  <label htmlFor="price" className="block text-sm font-medium text-[var(--text-primary)] mb-3">
+                    Price (₹) *
                   </label>
                   <input
                     type="number"
@@ -331,7 +333,7 @@ export default function AddItem() {
                     disabled={loading}
                     value={formData.price}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50"
+                    className="w-full px-4 py-3 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all duration-200 disabled:bg-[var(--surface-secondary)] disabled:cursor-not-allowed text-[var(--text-primary)] placeholder-[var(--text-muted)]"
                     placeholder="0.00"
                   />
                 </div>
@@ -339,7 +341,7 @@ export default function AddItem() {
 
               {/* Tags */}
               <div>
-                <label htmlFor="tags" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="tags" className="block text-sm font-medium text-[var(--text-primary)] mb-3">
                   Tags (optional)
                 </label>
                 <input
@@ -349,14 +351,14 @@ export default function AddItem() {
                   disabled={loading}
                   value={formData.tags}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50"
+                  className="w-full px-4 py-3 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all duration-200 disabled:bg-[var(--surface-secondary)] disabled:cursor-not-allowed text-[var(--text-primary)] placeholder-[var(--text-muted)]"
                   placeholder="vintage, denim, casual (comma-separated)"
                 />
               </div>
 
               {/* Image Upload */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-[var(--text-primary)] mb-3">
                   Images *
                 </label>
                 <input
@@ -366,29 +368,29 @@ export default function AddItem() {
                   accept="image/*"
                   disabled={loading}
                   onChange={handleFileSelect}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50"
+                  className="w-full px-4 py-3 border border-[var(--border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all duration-200 disabled:bg-[var(--surface-secondary)] disabled:cursor-not-allowed text-[var(--text-primary)]"
                 />
-                <p className="text-sm text-gray-500 mt-1">Select one or more images of your item</p>
+                <p className="text-sm text-[var(--text-muted)] mt-2">Select one or more images of your item</p>
               </div>
 
               {/* Selected Files Preview */}
               {selectedFiles.length > 0 && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[var(--text-primary)] mb-3">
                     Selected Images ({selectedFiles.length})
                   </label>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {selectedFiles.map((file, index) => (
-                      <div key={index} className="relative">
+                      <div key={index} className="relative group">
                         <img
                           src={URL.createObjectURL(file)}
                           alt={`Preview ${index + 1}`}
-                          className="w-full h-32 object-cover rounded-md"
+                          className="w-full h-32 object-cover rounded-lg border border-[var(--border-light)] group-hover:border-[var(--primary)] transition-colors duration-200"
                         />
                         <button
                           type="button"
                           onClick={() => removeFile(index)}
-                          className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm hover:bg-red-600"
+                          className="absolute top-2 right-2 bg-[var(--error)] text-white rounded-full w-6 h-6 flex items-center justify-center text-sm hover:bg-red-700 transition-colors duration-200 shadow-sm"
                         >
                           ×
                         </button>
@@ -399,11 +401,11 @@ export default function AddItem() {
               )}
 
               {/* Submit Button */}
-              <div className="flex justify-end">
+              <div className="flex justify-end pt-6">
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+                  className="btn-primary text-lg px-8 py-4 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? 'Adding Item...' : 'Add Item'}
                 </button>
